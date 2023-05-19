@@ -59,7 +59,7 @@ Implement the following endpoints and behaviour:
 
 
 - POST `/user/{id}/deals`: Creates a new deal associated with the user. The type of the deal should be specified in the request body.
-- GET `/user/{id}/deals`: Returns a list of all deals associated with a specific lead.
+- GET `/user/{id}/deals`: Returns a list of all deals associated with a specific user.
 
 
 ### C - External API
