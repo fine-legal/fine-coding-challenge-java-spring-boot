@@ -50,7 +50,7 @@ Deal Status can be one of the following:
 Please make use of polymorphism and inheritance where it makes sense.
 Please choose the appropriate data types for the fields and the appropriate relationships between the entities as well as the appropriate annotations / strategies for the entities and fields. Describe shorty the reasons why you picked the one picked.
 
-### B - Expose REST API - No implementation needed
+### B - Expose REST API
 Implement the following endpoints and behaviour:
 - GET `/leads`: Returns a list of all leads.
 - GET `/leads/{id}`: Returns the details of a specific lead by its ID.
@@ -62,7 +62,7 @@ Implement the following endpoints and behaviour:
 - GET `/user/{id}/deals`: Returns a list of all deals associated with a specific lead.
 
 
-### C - External API - No implementation needed
+### C - External API
 Implement a service that interacts with a fictional external API provided by https://api.courtdata.io/ and resolves the court based on the zip code.
 - GET `/court/zip-code/{zip_code}`: Returns the court associated with the zip code.
 
