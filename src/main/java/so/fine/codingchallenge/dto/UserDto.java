@@ -1,14 +1,7 @@
-package so.fine.codingchallenge.db;
+package so.fine.codingchallenge.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+public class UserDto {
 
-@Entity
-public class Lead {
-
-    @Id
-    @GeneratedValue
     private Long id;
 
     private String firstname;
@@ -24,6 +17,10 @@ public class Lead {
     private String phoneNumber;
 
     private String emailAddress;
+
+    private String state;
+
+    private String court;
 
     public Long getId() {
         return id;
@@ -87,5 +84,21 @@ public class Lead {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCourt() {
+        return court;
+    }
+
+    public void setCourt(String court) {
+        this.court = court;
     }
 }

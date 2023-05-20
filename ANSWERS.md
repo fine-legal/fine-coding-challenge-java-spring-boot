@@ -11,4 +11,13 @@
 - Use FetchType.LAZY for @ManyToOne and @OneToMany. Simply because there is no good reason to do it differently.
   See: https://stackoverflow.com/a/27520593
 
+### B - Service / API
 
+- Minimal Zipcode service (hardcoded and hacky) and a fake Court service
+
+- Core service tests written before the implementation. 
+  Tests are a bit minimal: Only checking a few data fields. They should check everything.
+  Also we are assuming that certain fields are nullable in the database, which they may not be in reality.
+
+- Using a mock for the CourtService, because this is an external service. 
+  Check this service by verifying the interaction with the mock.

@@ -1,14 +1,7 @@
-package so.fine.codingchallenge.db;
+package so.fine.codingchallenge.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+public class LeadDto {
 
-@Entity
-public class Lead {
-
-    @Id
-    @GeneratedValue
     private Long id;
 
     private String firstname;
