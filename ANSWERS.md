@@ -22,3 +22,5 @@
 
 - In the tests we're using a mock for the CourtService, because this is an external service. 
   Check this service by verifying the interaction with the mock.
+
+- Controller implementation: Logging has been omitted to save time.

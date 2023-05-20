@@ -79,7 +79,7 @@ public class CoreServiceTest {
         lead.setFirstname("Cosmo");
         lead.setZipcode(1234);
         lead = coreService.createLead(lead);
-        UserDto user = coreService.convertLead(lead);
+        UserDto user = coreService.convertLead(lead.getId());
         Assertions.assertThat(userRepository.findAll()).hasSize(1);
         User userEntity = userRepository.findAll().get(0);
         Assertions.assertThat(user.getFirstname()).isEqualTo("Cosmo");
@@ -94,9 +94,15 @@ public class CoreServiceTest {
     }
 
     @Test
+    public void convertNonexistingLeadsTest() {
+        Assertions.assertThatThrownBy(() -> coreService.convertLead(-1))
+                .isInstanceOf(ConvertNonexistingLeadException.class);
+    }
+
+    @Test
     public void createDealTest() {
         LeadDto lead = coreService.createLead(new LeadDto());
-        UserDto user = coreService.convertLead(lead);
+        UserDto user = coreService.convertLead(lead.getId());
         DealDto deal = new DealDto();
         deal.setDealType(DealType.DEAL_A);
         deal = coreService.createDeal(deal, user.getId());
@@ -108,7 +114,7 @@ public class CoreServiceTest {
     @Test
     public void getDealsTest() {
         LeadDto lead = coreService.createLead(new LeadDto());
-        UserDto user = coreService.convertLead(lead);
+        UserDto user = coreService.convertLead(lead.getId());
         DealDto deal = new DealDto();
         deal.setDealType(DealType.DEAL_A);
         deal = coreService.createDeal(deal, user.getId());
@@ -119,7 +125,7 @@ public class CoreServiceTest {
     @Test
     public void createDealWithoutTypeTest() {
         LeadDto lead = coreService.createLead(new LeadDto());
-        UserDto user = coreService.convertLead(lead);
+        UserDto user = coreService.convertLead(lead.getId());
         Assertions.assertThatThrownBy(() -> coreService.createDeal(new DealDto(), user.getId()))
                         .isInstanceOf(NoDealTypeException.class);
     }

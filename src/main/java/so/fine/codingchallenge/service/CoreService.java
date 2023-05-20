@@ -15,7 +15,7 @@ public interface CoreService {
 
     LeadDto createLead(LeadDto leadDto);
 
-    UserDto convertLead(LeadDto leadDto);
+    UserDto convertLead(long leadId);
 
     DealDto createDeal(DealDto dealDto, long userId);
 

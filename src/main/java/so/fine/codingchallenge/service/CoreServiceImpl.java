@@ -48,17 +48,26 @@ public class CoreServiceImpl implements CoreService {
     }
 
     @Override
-    public UserDto convertLead(LeadDto leadDto) {
+    @Transactional
+    public UserDto convertLead(long leadId) {
+        Optional<Lead> optional = leadRepository.findById(leadId);
+        if (optional.isEmpty()) {
+            throw new ConvertNonexistingLeadException(leadId);
+        }
+        return convertLeadInternal(optional.get());
+    }
+
+    private UserDto convertLeadInternal(Lead lead) {
         User user = new User();
-        user.setFirstname(leadDto.getFirstname());
-        user.setLastname(leadDto.getLastname());
-        user.setAddress(leadDto.getAddress());
-        user.setCity(leadDto.getCity());
-        user.setZipcode(leadDto.getZipcode());
-        user.setPhoneNumber(leadDto.getPhoneNumber());
-        user.setEmailAddress(leadDto.getEmailAddress());
-        user.setState(zipcodes.get(leadDto.getZipcode()));
-        user.setCourt(courtService.get(leadDto.getZipcode()));
+        user.setFirstname(lead.getFirstname());
+        user.setLastname(lead.getLastname());
+        user.setAddress(lead.getAddress());
+        user.setCity(lead.getCity());
+        user.setZipcode(lead.getZipcode());
+        user.setPhoneNumber(lead.getPhoneNumber());
+        user.setEmailAddress(lead.getEmailAddress());
+        user.setState(zipcodes.get(lead.getZipcode()));
+        user.setCourt(courtService.get(lead.getZipcode()));
         user = userRepository.save(user);
         return Conversions.userEntityToDto(user);
     }
