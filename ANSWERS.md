@@ -24,3 +24,15 @@
   Check this service by verifying the interaction with the mock.
 
 - Controller implementation: Logging has been omitted to save time.
+
+### C - Client for external service
+
+- New service not actually connected to the core service, because the external court data API doesn't actually exist.
+
+- TODO: Do something smarter in case of problems with the connection (e.g. use resilience4j).
+
+- TODO: Write a WireMock test. 
+
+### D - E - F
+
+- Out of time. Will be happy to discuss on Tuesday.

@@ -1,6 +1,7 @@
 package so.fine.codingchallenge.service;
 
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import so.fine.codingchallenge.db.*;
 import so.fine.codingchallenge.dto.*;
@@ -17,12 +18,15 @@ public class CoreServiceImpl implements CoreService {
     private final UserRepository userRepository;
 
     private final DealRepository dealRepository;
-
     private final CourtService courtService;
 
     private final Zipcodes zipcodes;
 
-    public CoreServiceImpl(LeadRepository leadRepository, UserRepository userRepository, DealRepository dealRepository, CourtService courtService, Zipcodes zipcodes) {
+    public CoreServiceImpl(LeadRepository leadRepository,
+                           UserRepository userRepository,
+                           DealRepository dealRepository,
+                           @Qualifier("fakeCourtService") CourtService courtService,
+                           Zipcodes zipcodes) {
         this.leadRepository = leadRepository;
         this.userRepository = userRepository;
         this.dealRepository = dealRepository;

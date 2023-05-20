@@ -1,8 +1,8 @@
 package so.fine.codingchallenge.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service("fakeCourtService")
 public class CourtServiceFake implements CourtService {
 
     @Override
