@@ -25,6 +25,12 @@
 
 - Controller implementation: Logging has been omitted to save time.
 
+- TODO: Better logging in case client gives a JSON payload with invalid deal type or invalid deal status.
+  But Spring Boot already handles these as a 400 Bad Request.
+
+- TODO: Omit fields in JSON response objects that are NULL in the database. Especially important for returning deals,
+  since different deal types are possible.
+
 ### C - Client for external service
 
 - New service not actually connected to the core service, because the external court data API doesn't actually exist.
