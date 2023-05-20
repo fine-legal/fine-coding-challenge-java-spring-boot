@@ -42,9 +42,9 @@ public class CoreServiceTest {
     @BeforeEach
     public void before() {
         when(courtService.get(anyInt())).thenReturn("Mocked_court");
-        leadRepository.deleteAll();
-        userRepository.deleteAll();
         dealRepository.deleteAll();
+        userRepository.deleteAll();
+        leadRepository.deleteAll();
     }
 
     @Test
@@ -99,7 +99,7 @@ public class CoreServiceTest {
         UserDto user = coreService.convertLead(lead);
         DealDto deal = new DealDto();
         deal.setDealType(DealType.DEAL_A);
-        deal = coreService.createDeal(new DealDto(), user.getId());
+        deal = coreService.createDeal(deal, user.getId());
         Assertions.assertThat(dealRepository.findAll()).hasSize(1);
         Assertions.assertThat(dealRepository.findAll().get(0)).isInstanceOf(DealA.class);
         Assertions.assertThat(dealRepository.findAll().get(0).getUser().getId()).isEqualTo(user.getId());
@@ -111,7 +111,7 @@ public class CoreServiceTest {
         UserDto user = coreService.convertLead(lead);
         DealDto deal = new DealDto();
         deal.setDealType(DealType.DEAL_A);
-        deal = coreService.createDeal(new DealDto(), user.getId());
+        deal = coreService.createDeal(deal, user.getId());
         Assertions.assertThat(coreService.getDeals(user.getId())).hasSize(1);
         Assertions.assertThat(coreService.getDeals(user.getId()).get(0).getDealType()).isEqualTo(DealType.DEAL_A);
     }
