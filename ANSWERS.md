@@ -42,3 +42,8 @@
 ### D - E - F
 
 - Out of time. Will be happy to discuss on Tuesday.
+
+### Final Remark
+
+- Spring Boot 3 requires a JDK 17 to run. The checked-in .idea folder specifies a JDK 11.
+  I left it as-is, but the JDK probably needs to be changed.
