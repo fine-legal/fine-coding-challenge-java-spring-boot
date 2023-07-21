@@ -23,7 +23,7 @@ We expect you to write unit tests for the code you write.
 ## Technical Requirements
 Here is the list of the technologies we are providing in the application structure:
 
-- Java 11
+- Java 17
 - Spring boot 3.0.6
 - Tomcat
 - Maven
