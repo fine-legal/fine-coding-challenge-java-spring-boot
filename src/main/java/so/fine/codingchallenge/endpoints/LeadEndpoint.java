@@ -17,7 +17,7 @@ public class LeadEndpoint {
         this.leadService = leadService;
     }
 
-    @GetMapping
+    @GetMapping("/leads")
     public Lead getLead(@RequestParam Long id){
         return leadService.getLead(id);
     }
