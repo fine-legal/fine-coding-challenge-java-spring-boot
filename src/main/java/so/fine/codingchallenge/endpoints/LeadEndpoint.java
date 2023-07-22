@@ -18,7 +18,7 @@ public class LeadEndpoint {
     }
 
     @GetMapping
-    public Lead getLead(@RequestParam Integer id){
+    public Lead getLead(@RequestParam Long id){
         return leadService.getLead(id);
     }
     

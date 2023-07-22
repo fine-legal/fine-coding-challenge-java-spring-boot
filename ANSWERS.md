@@ -8,4 +8,4 @@
 
 - These will need to be represented in the database as well. A 'Leads' table will represent the leads. When a lead is converted, an entry in the 'Users' table will be created. The 'Conversions' table will gain an entry that links the primary key of the user to the existing lead.
 
--the types should all be marked with @Entity to represent their DB tables. Names of tables specified
+- The types should all be marked with @Entity to represent their DB tables. Names of tables specified
