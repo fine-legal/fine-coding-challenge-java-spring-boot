@@ -2,13 +2,17 @@ package so.fine.codingchallenge.endpoints;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import so.fine.codingchallenge.types.Lead;
 import so.fine.codingchallenge.endpoints.dto.LeadDTO;
 import so.fine.codingchallenge.service.LeadService;
 import so.fine.codingchallenge.endpoints.dto.EntityToDTOConverter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class LeadEndpoint {
@@ -20,8 +24,8 @@ public class LeadEndpoint {
         this.leadService = leadService;
     }
 
-    @GetMapping("/leads")
-    public ResponseEntity<LeadDTO> getLead(@RequestParam Long id) {
+    @GetMapping("/leads/{id}")
+    public ResponseEntity<LeadDTO> getLead(@PathVariable Long id) {
         Lead lead = leadService.getLead(id);
         if(lead != null) {
             EntityToDTOConverter<Lead, LeadDTO> leadConverter = new EntityToDTOConverter<>();
@@ -30,6 +34,17 @@ public class LeadEndpoint {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/leads")
+    public ResponseEntity<List<LeadDTO>> getLeads() {
+        List<Lead> leads = leadService.getLeads();
+        List<LeadDTO> leadDTOs = new ArrayList<>();
+        EntityToDTOConverter<Lead, LeadDTO> leadConverter = new EntityToDTOConverter<>();
+        for(Lead lead: leads){
+            leadDTOs.add(leadConverter.convertToDto(lead, LeadDTO.class));
+        }
+        return new ResponseEntity<List<LeadDTO>>(leadDTOs, HttpStatus.OK);
     }
     
 }

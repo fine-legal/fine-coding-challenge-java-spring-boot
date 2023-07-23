@@ -21,3 +21,5 @@
 - Get request comes in and the LeadEndpoint class hands the request off to LeadService. Leads are stored in the database so LeadService asks LeadRepository to query the database. LeadRepository makes use of the spring JpaRepository interface which comes with some useful pre-built queries.
 
 - Before sending back the response, a DTO class (leadDTO) is used to decide which fields should be sent back in the response.
+
+- Getting all leads regardless of ID at /leads works similarly but makes use of the JpaRepository findAll query
