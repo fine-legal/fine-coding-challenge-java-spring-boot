@@ -12,15 +12,15 @@ import jakarta.persistence.Table;
 public class Lead {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    private Long id;
 
-    protected String firstName;
-    protected String lastName;
-    protected String address;
-    protected String city;
-    protected String zipCode;
-    protected String phoneNumber;
-    protected String emailAddress;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String city;
+    private String zipCode;
+    private String phoneNumber;
+    private String emailAddress;
 
     public String getFirstName() {
         return firstName;

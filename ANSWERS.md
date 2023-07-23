@@ -10,6 +10,8 @@
 
 - These will need to be represented in the database as well. A 'Leads' table will represent the leads. When a lead is converted, an entry in the 'Users' table will be created. The 'Conversions' table will gain an entry that links the primary key of the user to the existing lead.
 
+- *update* When it came to adding the POST path to /leads/{id}/conversion, I had a change of heart. User shouldn't extend Lead. Any time you would want to retrieve a Lead, you must check that it doesn't have an entry in the "conversions table". While this is doable, its just simpler if Users don't exist in the leads table in any capacity. I am removing the Conversions table and separating Leads and Users.
+
 - The types should all be marked with @Entity to represent their DB tables. Names of tables specified
 
 ## B

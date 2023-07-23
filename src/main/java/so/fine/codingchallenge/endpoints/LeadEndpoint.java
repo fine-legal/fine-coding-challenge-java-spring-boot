@@ -63,5 +63,10 @@ public class LeadEndpoint {
 
         return new ResponseEntity<>(createdLeadDTO, HttpStatus.CREATED);
     }
+
+    @PostMapping("/leads/{id}/convert")
+    public ResponseEntity<LeadDTO> convertLead(@PathVariable Long id) {
+        
+    }
     
 }

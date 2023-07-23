@@ -17,14 +17,6 @@ CREATE TABLE users (
     court VARCHAR(100)
 );
 
--- Create the conversions table
-CREATE TABLE conversions (
-    lead_id INT,
-    user_id INT,
-    FOREIGN KEY (lead_id) REFERENCES leads(id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
 -- Insert sample data into the leads table
 INSERT INTO leads (first_name, last_name, address, city, zip_code, phone_number, email_address)
 VALUES
@@ -35,8 +27,3 @@ VALUES
 INSERT INTO users (state, court)
 VALUES
     ('California', 'Superior Court');
-
--- Insert sample data into the conversions table to link leads and users
-INSERT INTO conversions (lead_id, user_id)
-VALUES
-    (1, 1); -- Linking lead with ID 1 to user with ID 1
