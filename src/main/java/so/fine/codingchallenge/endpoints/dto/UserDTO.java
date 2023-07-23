@@ -1,16 +1,6 @@
-package so.fine.codingchallenge.types;
+package so.fine.codingchallenge.endpoints.dto;
 
-import jakarta.persistence.*;
-
-import java.util.*;
-
-@Entity
-@Table(name = "Users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class UserDTO {
     private String firstName;
     private String lastName;
     private String address;
@@ -20,23 +10,6 @@ public class User {
     private String emailAddress;
     private String state;
     private String court;
-
-    private static final Map<String, String> ZIP_TO_STATE = Map.of(
-        "10001", "New York",
-        "90001", "California", 
-        "10437", "Berlin");
-
-    public User(Lead lead){
-        this.firstName = lead.getFirstName();
-        this.lastName = lead.getLastName();
-        this.address = lead.getAddress();
-        this.city = lead.getCity();
-        this.zipCode = lead.getZipCode();
-        this.phoneNumber = lead.getPhoneNumber();
-        this.emailAddress = lead.getEmailAddress();
-        this.state = ZIP_TO_STATE.get(lead.getZipCode());
-        this.court = "High Court";
-    }
 
     public String getFirstName() {
         return firstName;
@@ -110,3 +83,4 @@ public class User {
         this.court = court;
     }
 }
+

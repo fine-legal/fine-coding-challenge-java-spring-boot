@@ -27,3 +27,5 @@
 - Getting all leads regardless of ID at /leads works similarly but makes use of the JpaRepository findAll query
 
 - Creating a new lead makes use of the JpaRepository save
+
+- Converting a lead to a user has a few steps. First LeadEndpoint takes a post to /leads/{id}/convert. If a lead is found with that id then a user is created. This user has the same information as the lead plus a state and court (determined by a simple mapping with test data). After the user is succesfully created, the lead is deleted and the new user is returned in the response body

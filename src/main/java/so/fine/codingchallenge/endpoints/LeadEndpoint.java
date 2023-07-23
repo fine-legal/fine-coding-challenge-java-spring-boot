@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import so.fine.codingchallenge.types.Lead;
+import so.fine.codingchallenge.types.User;
 import so.fine.codingchallenge.endpoints.dto.LeadDTO;
+import so.fine.codingchallenge.endpoints.dto.UserDTO;
 import so.fine.codingchallenge.service.LeadService;
 import so.fine.codingchallenge.endpoints.dto.EntityToDTOConverter;
 
@@ -65,8 +67,15 @@ public class LeadEndpoint {
     }
 
     @PostMapping("/leads/{id}/convert")
-    public ResponseEntity<LeadDTO> convertLead(@PathVariable Long id) {
-        
+    public ResponseEntity<UserDTO> convertLead(@PathVariable Long id) {
+        User user = leadService.convertLead(id);
+        if(user != null) {
+            EntityToDTOConverter<User, UserDTO> leadConverter = new EntityToDTOConverter<>();
+            UserDTO createdUserDTO = leadConverter.convertToDto(user, UserDTO.class);
+            return new ResponseEntity<>(createdUserDTO, HttpStatus.CREATED);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     
 }
