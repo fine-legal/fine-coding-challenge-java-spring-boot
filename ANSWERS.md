@@ -23,3 +23,5 @@
 - Before sending back the response, a DTO class (leadDTO) is used to decide which fields should be sent back in the response.
 
 - Getting all leads regardless of ID at /leads works similarly but makes use of the JpaRepository findAll query
+
+- Creating a new lead makes use of the JpaRepository save

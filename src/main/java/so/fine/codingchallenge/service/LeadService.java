@@ -21,4 +21,8 @@ public class LeadService {
     public List<Lead> getLeads(){
         return leadRepository.findAll();
     }
+
+    public Lead createLead(Lead lead){
+        return leadRepository.save(lead);
+    }
 }

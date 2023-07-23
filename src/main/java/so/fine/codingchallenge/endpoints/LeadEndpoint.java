@@ -6,6 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import so.fine.codingchallenge.types.Lead;
 import so.fine.codingchallenge.endpoints.dto.LeadDTO;
 import so.fine.codingchallenge.service.LeadService;
@@ -45,6 +48,20 @@ public class LeadEndpoint {
             leadDTOs.add(leadConverter.convertToDto(lead, LeadDTO.class));
         }
         return new ResponseEntity<List<LeadDTO>>(leadDTOs, HttpStatus.OK);
+    }
+
+    @PostMapping("/leads")
+    public ResponseEntity<LeadDTO> createLead(@RequestBody LeadDTO leadDTO) {
+        EntityToDTOConverter<Lead, LeadDTO> leadConverter = new EntityToDTOConverter<>();
+        Lead lead = leadConverter.convertToEntity(leadDTO, Lead.class);
+
+        //do some validation here
+
+        Lead createdLead = leadService.createLead(lead);
+
+        LeadDTO createdLeadDTO = leadConverter.convertToDto(createdLead, LeadDTO.class);
+
+        return new ResponseEntity<>(createdLeadDTO, HttpStatus.CREATED);
     }
     
 }
